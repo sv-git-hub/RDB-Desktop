@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="712.0" prefWidth="1016.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="researchApp.ResearchController">
+   <children>
+      <Label fx:id="lblSearchTitle" layoutX="14.0" layoutY="19.0" prefHeight="40.0" prefWidth="178.0" text="ResearchDB" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="802.0" AnchorPane.topAnchor="15.0">
+         <font>
+            <Font size="30.0" />
+         </font>
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+      </Label>
+      <TabPane fx:id="paneTab" layoutX="15.0" layoutY="70.0" prefHeight="627.0" prefWidth="966.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="14.0">
+        <tabs>
+          <Tab fx:id="tabSearch" text="Search">
+               <content>
+                  <AnchorPane prefHeight="637.0" prefWidth="970.0" stylesheets="@research.css">
+                     <children>
+                        <TabPane fx:id="tabTextArea" layoutX="24.0" layoutY="282.0" prefHeight="110.0" prefWidth="922.0" stylesheets="@research.css" tabClosingPolicy="UNAVAILABLE">
+                          <tabs>
+                            <Tab text="Quote and Term">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <Group layoutX="11.0" layoutY="5.0">
+                                             <children>
+                                                <Label fx:id="lblQuote1" text="Quote:" />
+                                                <TextArea fx:id="tbxSearchQuote" layoutX="52.0" prefHeight="70.0" prefWidth="395.0" promptText="Quote" wrapText="true" />
+                                             </children>
+                                          </Group>
+                                          <Group layoutX="475.0" layoutY="5.0">
+                                             <children>
+                                                <Label fx:id="lblTerm1" text="Term:" />
+                                                <TextArea fx:id="tbxSearchTerm" layoutX="38.0" prefHeight="70.0" prefWidth="395.0" promptText="Term" wrapText="true" />
+                                             </children>
+                                          </Group>
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                            <Tab fx:id="tabFile" text="Files">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="82.0" prefWidth="466.0">
+                                       <children>
+                                          <TableView fx:id="tblSearchFiles" layoutX="561.0" layoutY="4.0" prefHeight="77.0" prefWidth="350.0">
+                                             <columns>
+                                                <TableColumn fx:id="tblSearchFileName" prefWidth="178.0" text="File Name" />
+                                                <TableColumn fx:id="tblSearchFilePath" minWidth="0.0" prefWidth="171.0" text="File Path" />
+                                             </columns>
+                                          </TableView>
+                                          <Button fx:id="btnSearchRemoveFile" layoutX="470.0" layoutY="30.0" mnemonicParsing="false" onAction="#removeNewFile" prefWidth="83.0" text="&lt;&lt; Remove" />
+                                          <Button fx:id="btnSearchAttachFile" layoutX="470.0" layoutY="6.0" mnemonicParsing="false" onAction="#addNewFile" prefWidth="83.0" text="Attach &gt;&gt;" />
+                                          <Separator layoutX="458.0" layoutY="6.0" orientation="VERTICAL" prefHeight="72.0" prefWidth="2.0" />
+                                          <Button fx:id="btnOpenFile" layoutX="470.0" layoutY="56.0" mnemonicParsing="false" onAction="#openFile" prefHeight="22.0" prefWidth="83.0" text="Open File" />
+                                       </children></AnchorPane>
+                              </content>
+                            </Tab>
+                          </tabs>
+                        </TabPane>
+                        <Group layoutX="20.0" layoutY="14.0">
+                           <children>
+                              <Label fx:id="lblTopic1" layoutY="3.0" text="Topic:" />
+                              <ComboBox fx:id="cbxSearchTopic" layoutX="53.0" prefHeight="25.0" prefWidth="275.0" />
+                              <Label fx:id="editTopic" layoutX="338.0" layoutY="5.0" text="Edit Topic" textFill="#1787e5">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Group>
+                        <Group layoutX="424.0" layoutY="14.0">
+                           <children>
+                              <Label fx:id="lblCustomSearch" layoutY="4.0" onMouseClicked="#completeSearch" text="Custom Search:" />
+                              <TextField fx:id="tbxCustomSearch" layoutX="108.0" onAction="#completeSearch" prefHeight="25.0" prefWidth="240.0" />
+                              <CheckBox fx:id="ckxContainsAll" layoutX="354.0" layoutY="4.0" mnemonicParsing="false" text="Fields Must Contain These">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </CheckBox>
+                           </children>
+                        </Group>
+                        <Group layoutX="3.0" layoutY="49.0">
+                           <children>
+                              <Label layoutY="1.0" text="Question:" />
+                              <ComboBox fx:id="cbxSearchQuestion" layoutX="71.0" layoutY="1.0" prefHeight="25.0" prefWidth="698.0" />
+                              <Label fx:id="editQuestion" layoutX="778.0" layoutY="4.0" text="Edit Question" textFill="#1787e5">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Group>
+                        <Group layoutY="94.0">
+                           <children>
+                              <Label fx:id="lblComment1" text="Comment:" />
+                              <TextArea fx:id="tbxSearchComment" layoutX="75.0" prefHeight="180.0" prefWidth="698.0" promptText="Comment" />
+                           </children>
+                        </Group>
+                        <Group fx:id="groupSearchDetails" layoutX="799.0" layoutY="93.0">
+                           <children>
+                              <Group layoutX="23.0" layoutY="-3.0">
+                                 <children>
+                                    <TextField fx:id="tbxSearchDate" layoutX="51.0" layoutY="3.0" onAction="#validateDate" prefHeight="23.0" prefWidth="90.0" promptText="Date" />
+                                    <Label alignment="CENTER_RIGHT" layoutX="-1.0" layoutY="3.0" text="Date:" />
+                                 </children>
+                              </Group>
+                              <Group layoutX="19.0" layoutY="32.0">
+                                 <children>
+                                    <TextField fx:id="tbxSearchVolume" layoutX="55.0" prefHeight="23.0" prefWidth="90.0" promptText="Volume" />
+                                    <Label alignment="CENTER_RIGHT" layoutX="-13.0" layoutY="3.0" text="Volume:" textAlignment="RIGHT" />
+                                 </children>
+                              </Group>
+                              <Group layoutX="21.0" layoutY="64.0">
+                                 <children>
+                                    <TextField fx:id="tbxSearchEdition" layoutX="53.0" prefHeight="23.0" prefWidth="90.0" promptText="Edition" />
+                                    <Label alignment="CENTER_RIGHT" layoutX="-16.0" layoutY="3.0" prefHeight="17.0" prefWidth="44.0" text="Edition:" />
+                                 </children>
+                              </Group>
+                              <Group layoutX="21.0" layoutY="96.0">
+                                 <children>
+                                    <TextField fx:id="tbxSearchIssue" layoutX="53.0" prefHeight="23.0" prefWidth="90.0" promptText="Issue" />
+                                    <Label alignment="CENTER_RIGHT" layoutX="-16.0" layoutY="3.0" prefHeight="17.0" prefWidth="44.0" text="Issue:" textAlignment="RIGHT" />
+                                 </children>
+                              </Group>
+                              <Group layoutX="21.0" layoutY="128.0">
+                                 <children>
+                                    <TextField fx:id="tbxSearchPages" layoutX="53.0" prefHeight="23.0" prefWidth="90.0" promptText="Page(s)/Para." />
+                                    <Label alignment="CENTER_RIGHT" layoutX="-34.0" layoutY="3.0" prefHeight="17.0" prefWidth="59.0" text="Pg(s)/Para:" textAlignment="RIGHT" />
+                                 </children>
+                              </Group>
+                              <Group layoutX="21.0" layoutY="160.0">
+                                 <children>
+                                    <TextField fx:id="tbxSearchTimeStamp" layoutX="54.0" onAction="#validateSearchTimeStamp" prefHeight="23.0" prefWidth="90.0" promptText="HH:MM:SS" />
+                                    <Label alignment="CENTER_RIGHT" layoutX="-37.0" layoutY="3.0" prefHeight="21.0" prefWidth="85.0" text="TimeStamp:" textAlignment="RIGHT" />
+                                 </children>
+                              </Group>
+                           </children>
+                        </Group>
+                        <Group layoutX="22.0" layoutY="404.0">
+                           <children>
+                              <Label fx:id="lblSelectNote" layoutX="451.0" text="Select a Note">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="editTable" layoutX="837.0" layoutY="1.0" text="Edit Table Summary" textFill="#1787e5">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Label>
+                              <TableView fx:id="tblSources" layoutY="18.0" onMouseClicked="#selectionData" prefHeight="165.0" prefWidth="927.0">
+                                <columns>
+                                  <TableColumn fx:id="tblID" maxWidth="50.0" prefWidth="39.0" text="ID" />
+                                  <TableColumn fx:id="tblSourceType" prefWidth="103.0" text="Source Type" />
+                                    <TableColumn fx:id="tblTitle" minWidth="0.0" prefWidth="515.0" text="Title ~ Author(s)" />
+                                    <TableColumn fx:id="tblSummary" editable="false" minWidth="0.0" prefWidth="276.0" text="Summary" />
+                                </columns>
+                              </TableView>
+                              <Group layoutY="-15.0">
+                                 <children>
+                                    <Hyperlink fx:id="tbxSearchHyperlink" layoutX="50.0" layoutY="2.0" onMouseClicked="#onClickLaunchHyperlink" prefHeight="23.0" prefWidth="392.0" />
+                                    <Label fx:id="lblLink" layoutX="16.0" layoutY="4.0" text="Link:" />
+                                    <Label fx:id="editHyperlink" layoutY="17.0" text="Edit Link" textFill="#1787e5">
+                                       <font>
+                                          <Font size="10.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Group>
+                              <Label fx:id="lblRecords" layoutX="658.0" layoutY="-1.0" text="Records: 0" />
+                           </children>
+                        </Group>
+                        <Separator layoutX="11.0" layoutY="82.0" prefHeight="3.0" prefWidth="925.0" />
+                     </children>
+                  </AnchorPane>
+               </content></Tab>
+          <Tab fx:id="tabEntry" text="Entry">
+            <content>
+                  <Group>
+                     <children>
+                    <AnchorPane fx:id="paneEntry" minHeight="0.0" minWidth="0.0" prefHeight="599.0" prefWidth="961.0">
+                           <children>
+                              <Group layoutX="-4.0" layoutY="16.0">
+                                 <children>
+                                    <Label fx:id="lblSourceType" layoutX="20.0" layoutY="-7.0" prefHeight="36.0" prefWidth="47.0" text="*Source&#10;Type:" textAlignment="RIGHT" wrapText="true" />
+                                    <ChoiceBox fx:id="cbxSourceType" layoutX="76.0" layoutY="1.0" prefWidth="150.0" />
+                                 </children>
+                              </Group>
+                              <Group layoutX="280.0" layoutY="16.0">
+                                 <children>
+                                    <Label fx:id="lblTopic" layoutY="3.0" text="*Topic:" textAlignment="RIGHT" />
+                                    <ComboBox fx:id="cbxTopic" layoutX="45.0" onAction="#validateTopic" prefHeight="21.0" prefWidth="260.0" />
+                                 </children>
+                              </Group>
+                              <Group layoutX="15.0" layoutY="58.0">
+                                 <children>
+                                    <Label fx:id="lblQuestion" layoutY="3.0" text="Question:" />
+                                    <ComboBox fx:id="cbxQuestion" editable="true" layoutX="58.0" prefHeight="21.0" prefWidth="875.0" />
+                                 </children>
+                              </Group>
+                              <Group layoutX="14.0" layoutY="94.0">
+                                 <children>
+                                    <TextField fx:id="tbxSummary" layoutX="62.0" prefHeight="23.0" prefWidth="395.0" promptText="Enter a brief on-point summary (e.g. &quot;Earliest manuscript date(s)&quot;)" />
+                                    <Label layoutX="-4.0" layoutY="3.0" text="*Summary:" textAlignment="RIGHT" />
+                                 </children>
+                              </Group>
+                              <Group layoutX="8.0" layoutY="131.0">
+                                 <children>
+                                    <Label fx:id="lblComment" text="*Comment:" textAlignment="RIGHT" />
+                                    <TextArea fx:id="tbxComment" layoutX="68.0" prefHeight="198.0" prefWidth="395.0" promptText="Comment" />
+                                 </children>
+                              </Group>
+                              <Group layoutX="512.0" layoutY="94.0">
+                                 <children>
+                                    <Label fx:id="lblQuote" text="Quote:" />
+                                    <TextArea fx:id="tbxQuote" layoutX="42.0" prefHeight="63.0" prefWidth="395.0" promptText="Quote" />
+                                 </children>
+                              </Group>
+                              <Group layoutX="517.0" layoutY="170.0">
+                                 <children>
+                                    <Label fx:id="lblTerm" text="Term:" />
+                                    <TextArea fx:id="tbxTerm" layoutX="37.0" prefHeight="63.0" prefWidth="395.0" promptText="Term" />
+                                 </children>
+                              </Group>
+                              <Group layoutX="505.0" layoutY="241.0">
+                                 <children>
+                                    <TableView fx:id="tblFiles" layoutX="93.0" prefHeight="88.0" prefWidth="350.0">
+                                      <columns>
+                                        <TableColumn fx:id="tblFileName" prefWidth="156.0" text="File Name" />
+                                        <TableColumn fx:id="tblFilePath" minWidth="0.0" prefWidth="193.0" text="File Path" />
+                                      </columns>
+                                    </TableView>
+                                    <Button fx:id="btnRemoveFile" layoutX="2.0" layoutY="34.0" mnemonicParsing="false" onAction="#removeFile" prefWidth="83.0" text="&lt;&lt; Remove" />
+                                    <Button fx:id="btnAttachFile" layoutX="2.0" layoutY="5.0" mnemonicParsing="false" onAction="#addFile" prefWidth="83.0" text="Attach &gt;&gt;" />
+                                 </children>
+                              </Group>
+                              <Group layoutX="26.0" layoutY="341.0">
+                                 <children>
+                                    <Label layoutX="-6.0" layoutY="2.0" text="**Source:" />
+                                    <ComboBox fx:id="cbxSource" layoutX="52.0" prefWidth="870.0" />
+                                 </children>
+                              </Group>
+                              <Group layoutX="3.0" layoutY="372.0">
+                                 <children>
+                                    <Label prefHeight="33.0" prefWidth="68.0" text="*Add Author&#10;/UserName:" textAlignment="RIGHT" />
+                                    <TextField fx:id="tbxAuthorFirst1" layoutX="76.0" layoutY="4.0" prefHeight="23.0" prefWidth="120.0" promptText="First or User Name" />
+                                    <TextField fx:id="tbxAuthorMiddle1" layoutX="200.0" layoutY="4.0" prefHeight="23.0" prefWidth="120.0" promptText="MiddleName" />
+                                    <TextField fx:id="tbxAuthorLast1" layoutX="324.0" layoutY="4.0" prefHeight="23.0" prefWidth="120.0" promptText="LastName" />
+                                    <TextField fx:id="tbxAuthorSuffix" layoutX="448.0" layoutY="5.0" prefHeight="23.0" prefWidth="46.0" promptText="Suffix" />
+                                 </children>
+                              </Group>
+                              <Group layoutX="20.0" layoutY="412.0">
+                                 <children>
+                                    <Label prefHeight="33.0" prefWidth="50.0" text="Select an&#10;Author:" textAlignment="RIGHT" />
+                                    <ComboBox fx:id="cbxAuthors" layoutX="60.0" layoutY="6.0" prefHeight="21.0" prefWidth="322.0" />
+                                 </children>
+                              </Group>
+                              <Group layoutX="506.0" layoutY="372.0">
+                                 <children>
+                                    <Button fx:id="btnEnter" layoutY="6.0" mnemonicParsing="false" onAction="#addAuthor" prefWidth="83.0" text="Enter &gt;&gt;" />
+                                    <Button fx:id="btnRemove" layoutY="36.0" mnemonicParsing="false" onAction="#removeAuthor" prefHeight="22.0" prefWidth="83.0" text="&lt;&lt; Remove" />
+                                    <TableView fx:id="tblAuthors" layoutX="93.0" prefHeight="93.0" prefWidth="350.0">
+                                      <columns>
+                                        <TableColumn fx:id="tblFirstName" maxWidth="150.0" minWidth="50.0" onEditCommit="#changeFirstNameCellEvent" prefWidth="100.0" text="First/User Name" />
+                                          <TableColumn fx:id="tblMiddleName" maxWidth="150.0" minWidth="50.0" onEditCommit="#changeMiddleNameCellEvent" prefWidth="100.0" sortable="false" text="Middle" />
+                                          <TableColumn fx:id="tblLastName" maxWidth="150.0" minWidth="50.0" onEditCommit="#changeLastNameCellEvent" prefWidth="100.0" text="Last Name" />
+                                          <TableColumn fx:id="tblSuffix" maxWidth="50.0" minWidth="50.0" onEditCommit="#changeSuffixCellEvent" prefWidth="50.0" text="Suffix" />
+                                      </columns>
+                                    </TableView>
+                                 </children>
+                              </Group>
+                              <Group layoutX="20.0" layoutY="470.0">
+                                 <children>
+                                    <TextField fx:id="tbxTitle" layoutX="59.0" prefHeight="26.0" prefWidth="870.0" promptText="Title" />
+                                    <Label fx:id="lblTitle" layoutX="26.0" layoutY="4.0" prefHeight="18.0" prefWidth="35.0" text="*Title:" textAlignment="RIGHT" />
+                                    <Label fx:id="lblDate" layoutX="26.0" layoutY="44.0" prefHeight="18.0" prefWidth="36.0" text="Date:" textAlignment="RIGHT" />
+                                    <TextField fx:id="dtYear" layoutX="59.0" layoutY="40.0" onAction="#validateYear" prefHeight="26.0" prefWidth="47.0" promptText="CCYY" />
+                                    <TextField fx:id="dtMonth" layoutX="114.0" layoutY="40.0" onAction="#validateMonth" prefHeight="26.0" prefWidth="37.0" promptText="MM" />
+                                    <TextField fx:id="dtDay" layoutX="160.0" layoutY="40.0" onAction="#validateDay" prefHeight="26.0" prefWidth="33.0" promptText="DD" />
+                                    <Label fx:id="lblVolume" layoutX="211.0" layoutY="44.0" prefHeight="18.0" prefWidth="40.0" text="Vol.:" />
+                                    <TextField fx:id="tbxVolume" layoutX="240.0" layoutY="41.0" prefHeight="26.0" prefWidth="86.0" promptText="Volume" />
+                                    <Label fx:id="lblEdition" layoutX="338.0" layoutY="44.0" prefHeight="18.0" prefWidth="40.0" text="Ed.:" />
+                                    <TextField fx:id="tbxEdition" layoutX="365.0" layoutY="41.0" prefHeight="26.0" prefWidth="86.0" promptText="Edition" />
+                                    <Label fx:id="lblIssue" layoutX="464.0" layoutY="44.0" prefHeight="18.0" prefWidth="48.0" text="Issue:" />
+                                    <TextField fx:id="tbxIssue" layoutX="504.0" layoutY="41.0" prefHeight="26.0" prefWidth="86.0" promptText="Issue" />
+                                    <Label fx:id="lblPages" layoutX="607.0" layoutY="44.0" prefHeight="18.0" prefWidth="75.0" text="Pg(s)/Para:" />
+                                    <TextField fx:id="tbxPages" layoutX="672.0" layoutY="41.0" prefHeight="26.0" prefWidth="86.0" promptText="Page(s)/Para." />
+                                    <Label fx:id="lblTimeStamp" layoutX="768.0" layoutY="45.0" prefHeight="18.0" prefWidth="80.0" text="TimeStamp:" />
+                                    <TextField fx:id="tbxTimeStamp" layoutX="842.0" layoutY="41.0" onAction="#validateTimeStamp" prefHeight="26.0" prefWidth="87.0" promptText="HH:MM:SS" />
+                                    <Label fx:id="lblRetrieved" layoutY="85.0" text="Retrieved: " />
+                                    <TextField fx:id="tbxHyperlink" layoutX="57.0" layoutY="81.0" prefHeight="26.0" prefWidth="872.0" promptText="Hyperlink" />
+                                 </children>
+                              </Group>
+                              <Label layoutX="784.0" layoutY="8.0" text="*   Required&#10;**  Required after initial entry" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </Group>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+      <Label fx:id="lblStatus" layoutX="28.0" layoutY="48.0" prefHeight="18.0" prefWidth="335.0">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <MenuBar fx:id="menuBar" layoutX="841.0" layoutY="23.0" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="23.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <Menu mnemonicParsing="false" text="Database">
+                    <items>
+                        <MenuItem fx:id="menuNewDatabase" mnemonicParsing="false" onAction="#newDatabase" text="New Database" />
+                        <MenuItem fx:id="menuOpen" mnemonicParsing="false" onAction="#openDatabase" text="Open Database" />
+                        <MenuItem fx:id="menuBackup" mnemonicParsing="false" onAction="#backup" text="Backup Database" />
+                    </items>
+                  </Menu>
+                  <Menu fx:id="menuImportExport" mnemonicParsing="false" text="Note">
+                    <items>
+                      <MenuItem fx:id="menuImport" mnemonicParsing="false" onAction="#importNote" text="Import" />
+                        <Menu fx:id="menuExport" mnemonicParsing="false" text="Export">
+                          <items>
+                            <MenuItem fx:id="menuExportSelection" mnemonicParsing="false" onAction="#exportSelection" text="Selection" />
+                              <MenuItem fx:id="menuExportAll" mnemonicParsing="false" onAction="#exportAll" text="Table Result" />
+                          </items>
+                        </Menu>
+                    </items>
+                  </Menu>
+                  <MenuItem fx:id="menuPrint" mnemonicParsing="false" onAction="#print" text="Print" />
+              <MenuItem fx:id="menuClose" mnemonicParsing="false" onAction="#applicationClose" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+                  <MenuItem fx:id="menuClear" mnemonicParsing="false" onAction="#clear" text="Clear Fields" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="menuAdd" mnemonicParsing="false" onAction="#addData" text="Add Note" />
+                  <MenuItem fx:id="menuUpdate" mnemonicParsing="false" onAction="#update" text="Update Note" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+              <MenuItem fx:id="menuMarkDelete" mnemonicParsing="false" onAction="#markDelete" text="Mark Note for Delete" />
+                  <MenuItem fx:id="menuUnMarkForDelete" mnemonicParsing="false" onAction="#unDelete" text="Unmark Note for Delete" />
+                  <MenuItem fx:id="menuReviewForDelete" mnemonicParsing="false" onAction="#reviewForDelete" text="Review for Delete" />
+                  <MenuItem fx:id="menuPermDelete" mnemonicParsing="false" onAction="#deletePermanently" text="Permanently Delete Note" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="menuDeletedDB" mnemonicParsing="false" onAction="#deleteDatabase" text="Delete Database" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem fx:id="menuManual" mnemonicParsing="false" onAction="#openManual" text="ResearchDB Manual" />
+                  <MenuItem fx:id="menuAbout" mnemonicParsing="false" onAction="#about" text="About" />
+               </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+      <Label fx:id="lblDatabase" layoutX="193.0" layoutY="31.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+   <cursor>
+      <Cursor fx:constant="DEFAULT" />
+   </cursor>
+</AnchorPane>

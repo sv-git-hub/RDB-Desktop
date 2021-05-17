@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="ResearchDB:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ResearchDB_jar</output-path>
+    <root id="archive" name="ResearchDB.jar">
+      <element id="module-output" name="ResearchDB" />
+      <element id="extracted-dir" path="C:/ScottV/Java/External Library jars/commons-lang3-3.9.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="C:/ScottV/Java/External Library jars/commons-text-1.6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="C:/ScottV/Java/External Library jars/controlsfx-8.40.14.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="C:/ScottV/Java/External Library jars/sqlite-jdbc-3.23.1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
