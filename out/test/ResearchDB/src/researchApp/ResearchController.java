@@ -1878,7 +1878,7 @@ public class ResearchController implements Initializable {
         importingData = true;
         data.forEach((n) -> {
 
-            //("\nSource: =====================================================");
+            //("\nSource: =====================================================");(
             this.cbxSourceType.setValue(n.get("Source").get(0)); // SourceType
             this.tbxTitle.setText(n.get("Source").get(1)); // Title
             this.dtYear.setText(n.get("Source").get(2)); // Year
